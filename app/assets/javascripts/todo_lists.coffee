@@ -9,3 +9,16 @@ $(document).ready ->
     $.get '/todo_lists/new', (data) ->
       $('.container-todo').append(data)
       return
+
+window.addTask = (el, id) ->
+  parent = $(el).parents('.add-task').parents('main.todo')
+  lists = parent.find('.list-items')
+  input = parent.find('#task')
+  text = input.val()
+  if text
+    $.post('todo_lists/' + id + '/items/add_item',
+      text: text).done (data) ->
+        lists.append(data)
+        return
+  else
+    alert("Please add title item before send it")

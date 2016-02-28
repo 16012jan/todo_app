@@ -38,6 +38,13 @@ class TodoListsController < ApplicationController
     redirect_to root_path
   end
 
+  def add_item
+    todo_list = TodoList.find(params[:id])
+    item = todo_list.items.create(title: params[:text])
+    # render json: item
+    render partial: "todo_items" , :locals => { todo: todo_list, item: item }
+  end
+
   private
 
     def set_todo_list

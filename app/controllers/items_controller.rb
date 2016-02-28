@@ -9,11 +9,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item =Item.new
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @item = @todo_list.items.create(item_params)
+    redirect_to todo_lists_path
   end
 
   def create
-    @item =Item.new(item_params)
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @item = @todo_list.items.create(item_params)
+    redirect_to todo_lists_path
   end
 
   def edit
