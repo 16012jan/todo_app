@@ -1,0 +1,11 @@
+<p>
+  <%= todo.title %>
+  <%= link_to "Delete", todo_list_path(todo), method: :delete, data:{confirm: "Are you sure?"} %>
+  <%= link_to "Edit", edit_todo_list_path(todo) %>
+</p>
+
+  <ul>
+    <% todo.items.each do |item| %>
+      <%= render partial: "todo_items", locals: {item: item, todo: todo } %>
+    <% end %>
+  </ul>

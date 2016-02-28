@@ -1,1 +1,11 @@
 <h1>Index TodoList</h1>
+
+<div class="container-todo">
+  <% @todo_lists.each do |todo|%>
+    <%= render partial: "todo_header", locals: {todo: todo } %>
+  <% end %>
+</div>
+<div class="new-todo">
+  <h3 class="button-text">Add TODO List</h3>
+</div>
+

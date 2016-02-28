@@ -9,18 +9,24 @@ class TodoListsController < ApplicationController
   end
 
   def new
-    @todo_list = TodoList.new
+    todo = TodoList.create
+    render partial: "todo_header" , :locals => { todo: todo }
   end
 
   def create
     @todo_list = TodoList.new(todo_list_params)
+    if @todo_list.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    if @todo_list.update
+    if @todo_list.update(todo_list_params)
       redirect_to root_path
     else
       render :edit
