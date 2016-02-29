@@ -1,5 +1,31 @@
 
-  <%= item.title %>
-  <%= link_to "Edit", edit_todo_list_item_path(todo, item) %>
-  <%= link_to "Delete", todo_list_item_path(todo, item), method: :delete %>
+<% if item.completed? %>
+  <section class="list-task clearfix">
+    <%= link_to complete_todo_list_item_path(todo, item), method: :patch do %>
+        <label class="compled"><input type="checkbox" class="toggle" checked ><%= item.title %></label>
+    <% end %>
+    <div class="list-icons">
+      <%= link_to todo_list_path(todo, item), method: :delete do %>
+          <i class="fa fa-trash"></i>
+      <% end %>
+      <i class="fa fa-pencil"></i>
+      <i class="fa fa-sort"></i>
+    </div>
+  </section>
+<% else %>
+  <section class="list-task clearfix">
+    <%= link_to complete_todo_list_item_path( todo, item), method: :patch do %>
+        <label><input type="checkbox" class="toggle"><%= item.title %></label>
+    <% end %>
+    <div class="list-icons">
+      <%= link_to todo_list_item_path(todo, item), method: :delete do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+      <%= link_to edit_todo_list_item_path(todo, item) do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+      <i class="fa fa-sort"></i>
+    </div>
+  </section>
+<% end %>
 

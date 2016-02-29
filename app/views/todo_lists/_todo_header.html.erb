@@ -1,13 +1,21 @@
 <main class="todo">
-  <p>
-    <%= todo.title %>
-    <%= link_to "Delete", todo_list_path(todo), method: :delete, data:{confirm: "Are you sure?"} %>
-    <%= link_to "Edit", edit_todo_list_path(todo) %>
-  </p>
+  <aside class="vertical-divider"></aside>
+
+  <section class="header">
+    <i class="fa fa-calendar"></i>
+    <h3 class="list-title"><%= todo.title %></h3>
+    <%= link_to todo_list_path(todo), method: :delete, data:{confirm: "Are you sure?"} do %>
+        <i class="fa fa-trash"></i>
+    <% end %>
+    <%= link_to edit_todo_list_path(todo) do %>
+        <i class="fa fa-pencil"></i>
+    <% end %>
+  </section>
 
   <section class="add-task clearfix">
-      <input id="btn" type="button" value="Add Task" onclick="addTask(event.target, <%= todo.id %>)">
-      <input id="task" type="text" placeholder="Start typing here to create a task...">
+    <i class="fa fa-plus"></i>
+    <input id="btn" type="button" value="Add Task" onclick="addTask(event.target, <%= todo.id %>)">
+    <input id="task" type="text" placeholder="Start typing here to create a task...">
   </section>
   <div class="list-items">
     <% todo.items.each do |item| %>

@@ -1,11 +1,22 @@
-<h1>Index TodoList</h1>
+
+<header>
+    <h1>Simple Todo Lists</h1>
+    <h2>From Ruby Garage</h2>
+  </header>
 
 <div class="container-todo">
   <% @todo_lists.each do |todo|%>
     <%= render partial: "todo_header", locals: {todo: todo } %>
   <% end %>
 </div>
-<div class="new-todo">
-  <h3 class="button-text">Add TODO List</h3>
-</div>
+
+<footer>
+  <div class="new-todo">
+  <i class="fa fa-plus"></i>
+    <h3 class="button-text">Add TODO List</h3>
+  </div>
+  <div class="copyright">
+    <p>&copy; Ruby Garage</p>
+  </div>
+</footer>
 

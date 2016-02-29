@@ -33,6 +33,16 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.delete
+
+    respond_to do |format|
+       format.html { redirect_to root_path }
+       format.js
+    end
+  end
+
+  def complete
+    @item = Item.find(params[:id])
+    @item.update_attribute(:completed_at, Time.now)
     redirect_to root_path
   end
 
