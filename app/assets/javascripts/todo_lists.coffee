@@ -22,3 +22,14 @@ window.addTask = (el, id) ->
         return
   else
     alert("Please add title item before send it")
+
+window.deleteTodo = (el, id) ->
+  if confirm('Are your sure delete this item?')
+    parent = $(el).parents('main.todo')
+    parent.remove()
+   $.ajax
+      url: '/todo_lists/' + id
+      type: 'DELETE'
+      success: (result) ->
+        parent.remove()
+        return

@@ -2,9 +2,9 @@
   <section class="header">
     <i class="fa fa-calendar"></i>
     <h3 class="list-title"><%= todo.title %></h3>
-    <%= link_to todo_list_path(todo), method: :delete, data:{confirm: "Are you sure?"} do %>
-        <i class="fa fa-trash"></i>
-    <% end %>
+    <a onclick="deleteTodo(event.target, <%= todo.id %>)">
+      <i class="fa fa-trash"></i>
+    </a>
     <%= link_to edit_todo_list_path(todo) do %>
         <i class="fa fa-pencil"></i>
     <% end %>

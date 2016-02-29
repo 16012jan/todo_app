@@ -35,7 +35,7 @@ class TodoListsController < ApplicationController
 
   def destroy
     @todo_list.delete
-    redirect_to root_path
+    render text: 'success'
   end
 
   def add_item
