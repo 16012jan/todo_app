@@ -26,10 +26,19 @@ window.addTask = (el, id) ->
 window.deleteTodo = (el, id) ->
   if confirm('Are your sure delete this item?')
     parent = $(el).parents('main.todo')
-    parent.remove()
    $.ajax
       url: '/todo_lists/' + id
       type: 'DELETE'
       success: (result) ->
         parent.remove()
         return
+
+window.completeItem = (el, id, todo_list_id) ->
+  parent = $(el).parent('.item-title')
+  $.ajax
+    url: 'todo_lists/' + todo_list_id + '/items/' + id + '/complete'
+    type: 'PATCH'
+    success: (result) ->
+      console.log (result)
+      parent.addClass('compled');
+      return

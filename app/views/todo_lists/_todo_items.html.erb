@@ -2,9 +2,9 @@
 <% if item.completed? %>
   <section class="list-task clearfix">
     <div class="task-checkbox">
-      <%= link_to complete_todo_list_item_path(todo, item), method: :patch do %>
-          <label class="complete"><input type="checkbox" class="toggle" checked ><%= item.title %></label>
-      <% end %>
+      <a>
+        <label class="compled"><input type="checkbox" class="toggle" checked ><%= item.title %></label>
+      </a>
     </div>
     <div class="list-icons clearfix">
       <%= link_to todo_list_item_path(todo, item), method: :delete do %>
@@ -15,11 +15,11 @@
     </div>
   </section>
 <% else %>
-  <section class="list-task clearfix">
+  <section class="list-task clearfix" onclick="completeItem(event.target, <%= item.id %>, <%= todo.id %>)">
     <div class="task-checkbox">
-      <%= link_to complete_todo_list_item_path( todo, item), method: :patch do %>
-          <label><input type="checkbox" class="toggle"><%= item.title %></label>
-      <% end %>
+      <a>
+        <label class="item-title"><input type="checkbox" class="toggle"><%= item.title %></label>
+      </a>
     </div>
     <div class="list-icons clearfix">
       <%= link_to todo_list_item_path(todo, item), method: :delete do %>
