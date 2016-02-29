@@ -33,11 +33,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.delete
-
-    respond_to do |format|
-       format.html { redirect_to root_path }
-       format.js
-    end
+    redirect_to root_path
   end
 
   def complete

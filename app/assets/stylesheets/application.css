@@ -57,7 +57,7 @@ h2{
 }
 
 .todo {
-  width: 60%;
+  width: 70%;
   min-width:600px;
   background: #fff;
   border-bottom-left-radius: 10px;
@@ -70,12 +70,15 @@ h2{
   margin-bottom: 50px;
 }
 
-.vertical-divider {
-  position:absolute;
-  left:86%;
+.todo:before {
+  content: '';
+  border-left: 1px solid #f5d6d6;
+  border-right: 1px solid #f5d6d6;
+  width: 3px;
+  position: absolute;
+  top: 0;
+  left: 40px;
   height: 100%;
-  width:100px;
-  border-left: 1px solid #eaeaea;
 }
 
 /*Header*/
@@ -212,26 +215,35 @@ h2{
   background:#fcfed5;
 }
 
-/*.list-task:hover  .list-icons {
-  visibility: visible;*/
-}
-
 .list-icons{
-  /*visibility: visible;*/
+  border-left: 1px solid #eaeaea;
   float:right;
-  width:15%;
+  min-width:100px;
+}
+.list-icon:after{
+  content: '';
+  border-left: 1px solid #f5d6d6;
+  border-right: 1px solid #f5d6d6;
+  width: 3px;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  height: 100%;
+
 }
 
 .list-icons .fa {
-  color:#999;
-  margin-top:20px;
-  font-size: 1em;
+  visibility: hidden;
+}
+
+.list-task:hover .fa {
+  visibility: visible;
 }
 
 .list-icons .fa.fa-pencil:after{
   content:"|";
-  margin-left:15%;
-  margin-right: 15%;
+  margin-left:5px;
+  margin-right: 5px;
   font-size: .8em;
   opacity: 1;
 }
@@ -262,23 +274,28 @@ h2{
 
 .list-icons .fa.fa-sort:after{
   content:"|";
-  margin-left:15%;
-  margin-right: 15%;
+  margin-left:5px;
+  margin-right: 5px;
   font-size: .8em;
   opacity: 1;
 }
 
 .toggle {
-  margin: 20px 30px 20px 15px;
+  float:left;
+  margin: 0px 30px 20px 15px;
 }
 
-.compled {
+.task-checkbox{
+  float: left;
+  margin-top: 20px;
+}
+
+.complete {
   opacity: .5;
   text-decoration: line-through;
 }
 
-input[type=checkbox]
-{
+input[type=checkbox]{
   transform: scale(1.2);
   -ms-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -288,17 +305,6 @@ input[type=checkbox]
 
 label {
   color:#999;
-}
-
-.todo:before {
-  content: '';
-  border-left: 1px solid #f5d6d6;
-  border-right: 1px solid #f5d6d6;
-  width: 3px;
-  position: absolute;
-  top: 0;
-  left: 40px;
-  height: 100%;
 }
 
 .new-todo{

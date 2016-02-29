@@ -35,11 +35,7 @@ class TodoListsController < ApplicationController
 
   def destroy
     @todo_list.delete
-
-    respond_to do |format|
-       format.html { redirect_to root_path }
-       format.js
-    end
+    redirect_to root_path
   end
 
   def add_item

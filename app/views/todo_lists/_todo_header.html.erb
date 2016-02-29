@@ -1,6 +1,4 @@
 <main class="todo">
-  <aside class="vertical-divider"></aside>
-
   <section class="header">
     <i class="fa fa-calendar"></i>
     <h3 class="list-title"><%= todo.title %></h3>
@@ -21,5 +19,6 @@
     <% todo.items.each do |item| %>
       <%= render partial: "todo_items", locals: {item: item, todo: todo } %>
     <% end %>
+
   </div>
 </main>
