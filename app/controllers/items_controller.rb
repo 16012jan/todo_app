@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
       @item.delete
-      render text: 'success'
+      redirect_to root_path
   end
 
   def complete
