@@ -2,19 +2,20 @@ class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = current_user.todo_lists
   end
 
   def show
   end
 
   def new
-    todo = TodoList.create
+    @todo_list = current_user.todo_lists.build
+    #todo = TodoList.create
     render partial: "todo_header" , :locals => { todo: todo }
   end
 
   def create
-    @todo_list = TodoList.new(todo_list_params)
+    @todo_list = current_user.todo_lists.build(todo_list_params)
     if @todo_list.save
       redirect_to root_path
     else
