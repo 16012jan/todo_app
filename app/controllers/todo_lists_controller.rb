@@ -10,7 +10,7 @@ class TodoListsController < ApplicationController
 
   def new
     @todo_list = current_user.todo_lists.build
-    #todo = TodoList.create
+    todo = TodoList.create
     render partial: "todo_header" , :locals => { todo: todo }
   end
 
