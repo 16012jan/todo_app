@@ -32,15 +32,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.delete
-    redirect_to root_path
+    @item = Item.find(params[:id])
+      @item.delete
+      render text: 'success'
   end
 
   def complete
     @item = Item.find(params[:id])
     @item.update_attribute(:completed_at, Time.now)
     render json: @item
-    # redirect_to root_path
   end
 
   private

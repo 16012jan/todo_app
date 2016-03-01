@@ -7,9 +7,9 @@
       </a>
     </div>
     <div class="list-icons clearfix">
-      <%= link_to todo_list_item_path(todo, item), method: :delete do %>
-          <i class="fa fa-trash"></i>
-      <% end %>
+      <a onclick="deleteItem(event.target, <%= item.id %>, <%= todo.id %>)">
+        <i class="fa fa-trash"></i>
+      </a>
       <i class="fa fa-pencil"></i>
       <i class="fa fa-sort"></i>
     </div>

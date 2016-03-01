@@ -27,9 +27,10 @@ class TodoListsController < ApplicationController
 
   def update
     if @todo_list.update(todo_list_params)
-      redirect_to root_path
+      # redirect_to :root
+      render text: 'success'
     else
-      render :edit
+      render text: 'fail'
     end
   end
 

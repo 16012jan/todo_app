@@ -33,6 +33,16 @@ window.deleteTodo = (el, id) ->
         parent.remove()
         return
 
+window.deleteItem = (el, id, todo_id) ->
+  if confirm('Are your sure delete this item?')
+    parent = $(el).parents('.list-icons').parents('.list-task')
+    $.ajax
+      url: '/todo_lists/' + todo_id + '/items/' + id
+      type: 'DELETE'
+      success: (result) ->
+        parent.remove()
+        return
+
 window.completeItem = (el, id, todo_list_id) ->
   parent = $(el).parent('.item-title')
   $.ajax
@@ -42,3 +52,18 @@ window.completeItem = (el, id, todo_list_id) ->
       console.log (result)
       parent.addClass('compled');
       return
+
+window.changeTitle = (keyCode, el, id) ->
+  title = $(el).val()
+  if (keyCode == 13)
+    $.ajax
+      url: 'todo_lists/' + id
+      data: {todo_list: {title: title}}
+      type: 'PATCH'
+      success: (result) ->
+        $(el).parents('section.header').find('h3.list-title').text(title)
+        $(el).parents('section.header').find('input.title-input').hide()
+        return
+
+window.showInput = (el) ->
+  $(el).parents('section.header').find('input.title-input').show()
